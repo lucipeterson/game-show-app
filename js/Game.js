@@ -27,28 +27,37 @@ class Game {
         this.activePhrase.addPhraseToDisplay();
     }
 
-    handleInteraction(choice){
-        choice.addEventListener('click', 'disable');
+    handleInteraction(chosen){
         if ("choice not in phrase") {
-            choice.addClass('wrong');
-            removeLife();
+            chosen.setAttribute('class','wrong');
+            this.removeLife();
         } else {
-            choice.addClass('chosen');
+            chosen.setAttribute('class','chosen');
             showMatchedLetter(phrase);
         }
-    checkForWin();
+    }
+
+    checkForWin(){
     if (win === true) {gameOver()}
     }
 
     removeLife(){
-        live.remove();
-        lost.add();
-        if (lostHearts.count > 4) {gameOver()};
+        let scoreBoard = document.querySelector('ol');
+        let lives = document.querySelectorAll('.tries');
+        scoreBoard.removeChild(lives[0]);
+        this.missed += 1;
+        if (this.missed > 4) {this.gameOver()};
     }
+
     checkForWin(){
         let win = false;
         let correctLetters = [];
         if (correctLetters in phraseLetters){win = true} else win = false;
     }
-    gameOver(){"display updated startScreenOverlay"}
+
+    gameOver(){
+        reset();
+        const gameOverMessage = document.querySelector('#game-over-message');
+        gameOverMessage.innerText = 'GAME OVER';
+    }
 };

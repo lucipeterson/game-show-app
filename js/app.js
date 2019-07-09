@@ -3,24 +3,22 @@
 //DOM ELEMENTS
 const startGameButton = document.getElementById('btn__reset');
 const keyboard = document.getElementById('qwerty');
+const keyboardLetters = document.querySelectorAll('.key');
 
-//NEW GAME INSTANTIATED
-// const game = new Game();
-// game.phrases.forEach((phrase, index) => {
-//     console.log(`Phrase ${index} - phrase: ${phrase}`);
-//     });
-// game.startGame();
-
-//FUNCTIONS
+//TOP-LEVEL FUNCTIONS
 function reset(){
-    const game = new Game();
+    const game = new Game(); 
     game.startGame();
+    for(i=0;i<keyboardLetters.length;i+=1){
+        let chosen = keyboardLetters[i];
+        chosen.addEventListener('click', event => {
+            chosen.disabled = true;
+            game.handleInteraction(chosen);
+        });
+    };
 };
 
 //EVENT HANDLERS
 startGameButton.addEventListener('click', reset);
 
 //TEST
-// const game = new Game();
-// game.startGame();
-// console.log(`Active Phrase - phrase: ${game.activePhrase.phrase}`);
