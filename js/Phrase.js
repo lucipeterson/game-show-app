@@ -48,11 +48,6 @@ class Phrase {
         };
     }
 
-    resetPhrase() {
-        let letters = document.querySelectorAll('li');
-        for(let i=0;i<letters.length;i+=1){letter.setAttribute('class', 'hide space')};
-    }
-
     checkLetter(){if (letter in phrase) {displayLetter(userChoice)}}
     showMatchedLetter(){}
 };
