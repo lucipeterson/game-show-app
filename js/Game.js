@@ -58,6 +58,10 @@ class Game {
     gameOver(){
         reset();
         const gameOverMessage = document.querySelector('#game-over-message');
+        const startGameButton = document.querySelector('#btn__reset');
+        startGameButton.innerText = 'Start New Game';
         gameOverMessage.innerText = 'GAME OVER';
+        gameOverMessage.style.color = 'red';
+        startScreenOverlay.style.display = "flex";
     }
 };
