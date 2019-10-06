@@ -46,7 +46,7 @@ class Game {
         let lives = document.querySelectorAll('.tries');
         scoreBoard.removeChild(lives[0]);
         this.missed += 1;
-        if (this.missed > 4) {this.gameOver();resetPhrase()};
+        if (this.missed > 4) {this.gameOver()};
     }
 
     checkForWin(){
@@ -58,10 +58,13 @@ class Game {
     gameOver(){
         reset();
         const letters = document.querySelectorAll('li');
+        const keys = document.querySelectorAll('button');
         for(let i=0;i<letters.length;i+=1){
             letters[i].remove();
             };
-        //letterBox.removeChild('li');
+        for(let i=0;i<keys.length;i+=1){
+            keys[i].removeAttribute('class')
+            };
         const gameOverMessage = document.querySelector('#game-over-message');
         const startGameButton = document.querySelector('#btn__reset');
         startGameButton.innerText = 'Start New Game';
