@@ -56,7 +56,6 @@ class Game {
     }
 
     gameOver(){
-        reset();
         const letters = document.querySelectorAll('li');
         const keys = document.querySelectorAll('button');
         for(let i=0;i<letters.length;i+=1){
@@ -72,4 +71,12 @@ class Game {
         gameOverMessage.style.color = 'red';
         startScreenOverlay.style.display = "flex";
     }
+    
+    //function to re-initialize variables **Added on 10/7/2019
+    reload(){
+		this.missed = 0; 
+        this.activePhrase = null;
+	}
 };
+
+// See attached file Changes.md for in depth explanation of modifications
