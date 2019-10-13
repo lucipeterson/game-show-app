@@ -38,7 +38,7 @@ class Game {
     }
 
     checkForWin(){
-    if (win === true) {gameOver()}
+        if (win === true) {gameOver()}
     }
 
     removeLife(){
@@ -55,7 +55,9 @@ class Game {
         if (correctLetters in phraseLetters){win = true} else win = false;
     }
 
-    gameOver(){
+    /*I got the lives to reset but then the game doesn't function  properly the
+    second time around.  Need to fix.*/
+    gameOver(){  
         reset();
         const letters = document.querySelectorAll('li');
         const keys = document.querySelectorAll('button');
@@ -65,6 +67,8 @@ class Game {
         for(let i=0;i<keys.length;i+=1){
             keys[i].removeAttribute('class')
             };
+        const scoreboard = document.querySelector('ol');
+        scoreboard.innerHTML = '<li class="tries"><img src="images/liveHeart.png" alt="Heart Icon" height="35" width="30"></li> <li class="tries"><img src="images/liveHeart.png" alt="Heart Icon" height="35" width="30"></li> <li class="tries"><img src="images/liveHeart.png" alt="Heart Icon" height="35" width="30"></li> <li class="tries"><img src="images/liveHeart.png" alt="Heart Icon" height="35" width="30"></li> <li class="tries"><img src="images/liveHeart.png" alt="Heart Icon" height="35" width="30"></li>';
         const gameOverMessage = document.querySelector('#game-over-message');
         const startGameButton = document.querySelector('#btn__reset');
         startGameButton.innerText = 'Start New Game';
