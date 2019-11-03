@@ -44,9 +44,12 @@ class Game {
     removeLife(){
         let scoreBoard = document.querySelector('ol');
         let lives = document.querySelectorAll('.tries');
+        const lostLife = document.createElement('li');
         scoreBoard.removeChild(lives[0]);
+        scoreBoard.append(lostLife);
+        lostLife.innerHTML = '<li class="tries"><img src="images/lostHeart.png" alt="Heart Icon" height="35" width="30"></li>'
         this.missed += 1;
-        if (this.missed > 4) {this.gameOver()};
+        if (this.missed > 4) {this.gameOver();this.missed = 0};
     }
 
     checkForWin(){
@@ -55,8 +58,7 @@ class Game {
         if (correctLetters in phraseLetters){win = true} else win = false;
     }
 
-    /*I got the lives to reset but then the game doesn't function  properly the
-    second time around.  Need to fix.*/
+    //You lose more lives per turn the second time you play the game, need to fix.
     gameOver(){  
         reset();
         const letters = document.querySelectorAll('li');
