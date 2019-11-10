@@ -47,9 +47,13 @@ class Game {
         const lostLife = document.createElement('li');
         scoreBoard.removeChild(lives[0]);
         scoreBoard.append(lostLife);
-        lostLife.innerHTML = '<li class="tries"><img src="images/lostHeart.png" alt="Heart Icon" height="35" width="30"></li>'
+        lostLife.setAttribute('class', 'tries');
+        lostLife.innerHTML = '<img src="images/lostHeart.png" alt="Heart Icon" height="35" width="30">'
         this.missed += 1;
-        if (this.missed > 4) {this.gameOver();this.missed = 0};
+        if (this.missed > 4) {this.gameOver(); this.missed = 0; 
+            console.log(lives);
+            console.log(this.missed)}
+        
     }
 
     checkForWin(){
@@ -60,7 +64,6 @@ class Game {
 
     //You lose more lives per turn the second time you play the game, need to fix.
     gameOver(){  
-        reset();
         const letters = document.querySelectorAll('li');
         const keys = document.querySelectorAll('button');
         for(let i=0;i<letters.length;i+=1){
@@ -73,8 +76,8 @@ class Game {
         scoreboard.innerHTML = '<li class="tries"><img src="images/liveHeart.png" alt="Heart Icon" height="35" width="30"></li> <li class="tries"><img src="images/liveHeart.png" alt="Heart Icon" height="35" width="30"></li> <li class="tries"><img src="images/liveHeart.png" alt="Heart Icon" height="35" width="30"></li> <li class="tries"><img src="images/liveHeart.png" alt="Heart Icon" height="35" width="30"></li> <li class="tries"><img src="images/liveHeart.png" alt="Heart Icon" height="35" width="30"></li>';
         const gameOverMessage = document.querySelector('#game-over-message');
         const startGameButton = document.querySelector('#btn__reset');
-        startGameButton.innerText = 'Start New Game';
-        gameOverMessage.innerText = 'GAME OVER';
+        startGameButton.innerText = 'Start Game';
+        gameOverMessage.innerText = 'Game Over';
         gameOverMessage.style.color = 'red';
         startScreenOverlay.style.display = "flex";
     }

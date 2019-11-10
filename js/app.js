@@ -5,10 +5,11 @@ const startGameButton = document.getElementById('btn__reset');
 const keyboard = document.getElementById('qwerty');
 const keyboardLetters = document.querySelectorAll('.key');
 
-//TOP-LEVEL FUNCTIONS
+//RESET FUNCTION
 function reset(){
     const game = new Game(); 
     game.startGame();
+    for(i=0;i<keyboardLetters.length;i+=1){keyboardLetters[i].disabled = false}
     for(i=0;i<keyboardLetters.length;i+=1){
         let chosen = keyboardLetters[i];
         chosen.addEventListener('click', event => {
@@ -18,7 +19,6 @@ function reset(){
     };
 };
 
-//EVENT HANDLERS
 startGameButton.addEventListener('click', reset);
 
-//TEST
+
