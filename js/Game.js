@@ -1,9 +1,9 @@
 //Treehouse FSJS Techdegree - Project 4 - OOP Game App - Game.js
 
-//PAGE ELEMENTS DEFINED
+//DOM ELEMENTS DEFINED
 const startScreenOverlay = document.getElementById("overlay");
 
-//CLASSES
+//GAME CLASS
 class Game {
     constructor(){
         this.missed = 0; 

@@ -1,25 +1,6 @@
 // Treehouse FSJS Techdegree - Project 4 - OOP Game App - Phrase.js
 
-//GLOBAL VARIABLES
-let userChoice = document.querySelector('chosen');
-
-//TOP-LEVEL FUNCTIONS
-function displayPhrase() {
-    let randomPhrase = Game.phrases.random();
-    document.createElement('<div id = "phrase" class = "section"></div>')
-    let phraseLetters = randomPhrase.split();
-    for (i=0;i<phraseLetters.length;i+=1){
-        document.createElement(`<li class = 'hide letter ${phraseLetters[i]}'></li>`)
-    };
-};
-
-
-//Creates a letter box based on the letter the player chooses
-function displayLetter(chosenLetter) {
-    document.createElement(`<li>${chosenLetter}</li>`)
-};
-
-//CLASSES
+//PHRASE CLASS
 class Phrase {
     constructor(phrase) {
         this.phrase = phrase.toLowerCase();
