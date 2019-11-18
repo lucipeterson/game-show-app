@@ -44,11 +44,9 @@ class Game {
     removeLife(){
         let scoreBoard = document.querySelector('ol');
         let lives = document.querySelectorAll('.tries');
-        const lostLife = document.createElement('li');
-        scoreBoard.removeChild(lives[0]);
-        scoreBoard.append(lostLife);
-        lostLife.setAttribute('class', 'tries');
-        lostLife.innerHTML = '<img src="images/lostHeart.png" alt="Heart Icon" height="35" width="30">'
+        for (i=0;i<lives.length;i+=1) {
+            lives[this.missed].innerHTML = '<img src="images/lostHeart.png" alt="Heart Icon" height="35" width="30">'
+        }
         this.missed += 1;
         if (this.missed > 4) {this.gameOver(); this.missed = 0; 
             console.log(lives);
