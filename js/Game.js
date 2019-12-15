@@ -1,9 +1,7 @@
 //Treehouse FSJS Techdegree - Project 4 - OOP Game App - Game.js
 
-//DOM ELEMENTS DEFINED
 const startScreenOverlay = document.getElementById("overlay");
 
-//GAME CLASS
 class Game {
     constructor(){
         this.missed = 0; 
@@ -28,13 +26,9 @@ class Game {
     }
 
     handleInteraction(chosen){
-        if ("choice not in phrase") {
-            chosen.setAttribute('class','wrong');
-            this.removeLife();
-        } else {
-            chosen.setAttribute('class','chosen');
-            showMatchedLetter(phrase);
-        }
+        console.log(this.activePhrase.phrase);
+        console.log(chosen.innerText);
+        this.activePhrase.checkLetter(chosen);
     }
 
     checkForWin(){
@@ -42,16 +36,12 @@ class Game {
     }
 
     removeLife(){
-        let scoreBoard = document.querySelector('ol');
         let lives = document.querySelectorAll('.tries');
         for (i=0;i<lives.length;i+=1) {
             lives[this.missed].innerHTML = '<img src="images/lostHeart.png" alt="Heart Icon" height="35" width="30">'
         }
         this.missed += 1;
-        if (this.missed > 4) {this.gameOver(); this.missed = 0; 
-            console.log(lives);
-            console.log(this.missed)}
-        
+        if (this.missed > 4) {this.gameOver(); this.missed = 0}
     }
 
     checkForWin(){
@@ -60,7 +50,6 @@ class Game {
         if (correctLetters in phraseLetters){win = true} else win = false;
     }
 
-    //You lose more lives per turn the second time you play the game, need to fix.
     gameOver(){  
         const letters = document.querySelectorAll('li');
         const keys = document.querySelectorAll('button');

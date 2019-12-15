@@ -1,11 +1,10 @@
 //Treehouse FSJS Techdegree - Project 4 - OOP Game App - app.js
 
-//DOM ELEMENTS DEFINED
 const startGameButton = document.getElementById('btn__reset');
 const keyboard = document.getElementById('qwerty');
 const keyboardLetters = document.querySelectorAll('.key');
 
-//Starts a new game when new game button is pressed.
+//Starts a new game when new game button is clicked.
 function reset(){
     const game = new Game(); 
     game.startGame();
