@@ -26,15 +26,23 @@ class Phrase {
         console.log(this.phrase.indexOf(chosen.innerText));
         if (this.phrase.indexOf(chosen.innerText) < 0) {
             chosen.setAttribute('class','wrong');
-            Game.removeLife()
+            game.removeLife()
         }
         else {chosen.setAttribute('class','chosen');this.showMatchedLetter()};
     }
 
     showMatchedLetter(){
-        const phraseLetters = document.querySelectorAll(/*in progress */);
-        for (let i=0;i<phraseLetters.length;i+=1) {
-            if (phraseLetters[i].className = this.activePhrase) {}
-        };
+        let chosen = document.querySelectorAll('.chosen');
+        let chosenLetters = [];
+        for (let i=0;i<chosen.length;i+=1){
+            chosenLetters.push(chosen[i].innerText)
+        };       
+        const revealLetters = document.querySelector('ul').children;            
+        console.log(revealLetters);
+        for (let i=0;i<revealLetters.length;i+=1) {
+            if (chosenLetters.indexOf(revealLetters[i].innerText) > -1) {
+                revealLetters[i].setAttribute('class','show')
+                }
+            }
     }
 };

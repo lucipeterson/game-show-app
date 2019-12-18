@@ -3,10 +3,11 @@
 const startGameButton = document.getElementById('btn__reset');
 const keyboard = document.getElementById('qwerty');
 const keyboardLetters = document.querySelectorAll('.key');
+let game;
 
 //Starts a new game when new game button is clicked.
 function reset(){
-    const game = new Game(); 
+    let game = new Game(); 
     game.startGame();
     for(i=0;i<keyboardLetters.length;i+=1){keyboardLetters[i].disabled = false}
     for(i=0;i<keyboardLetters.length;i+=1){
