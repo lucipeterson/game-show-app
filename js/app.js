@@ -7,7 +7,7 @@ let game;
 
 //Starts a new game when new game button is clicked.
 function reset(){
-    let game = new Game(); 
+    game = new Game(); 
     game.startGame();
     for(i=0;i<keyboardLetters.length;i+=1){keyboardLetters[i].disabled = false}
     for(i=0;i<keyboardLetters.length;i+=1){

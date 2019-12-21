@@ -31,10 +31,6 @@ class Game {
         this.activePhrase.checkLetter(chosen);
     }
 
-    checkForWin(){
-        if (win === true) {gameOver()}
-    }
-
     removeLife(){
         let lives = document.querySelectorAll('.tries');
         for (i=0;i<lives.length;i+=1) {

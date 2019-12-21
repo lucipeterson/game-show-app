@@ -44,5 +44,6 @@ class Phrase {
                 revealLetters[i].setAttribute('class','show')
                 }
             }
+        game.checkForWin();
     }
 };
