@@ -1,4 +1,5 @@
 //Treehouse FSJS Techdegree - Project 4 - OOP Game App - Game.js
+let win;
 const startScreenOverlay = document.getElementById("overlay");
 
 class Game {
@@ -36,11 +37,11 @@ class Game {
             lives[this.missed].innerHTML = '<img src="images/lostHeart.png" alt="Heart Icon" height="35" width="30">'
         }
         this.missed += 1;
-        if (this.missed > 4) {this.gameOver(); this.missed = 0}
+        if (this.missed > 4) {this.gameOver()}
     }
 
     checkForWin(){
-        let win = false;
+        win = false;
         const phraseLetters = document.querySelector('ul').children;
         const revealLetters = [];
         for (let i=0;i<phraseLetters.length;i+=1){
@@ -56,6 +57,7 @@ class Game {
     }
 
     gameOver(){
+        this.missed = 0;
         const letters = document.querySelectorAll('li');
         const keys = document.querySelectorAll('button');
         for(let i=0;i<letters.length;i+=1){
@@ -71,7 +73,7 @@ class Game {
         startGameButton.innerText = 'Start Game';
         gameOverMessage.innerText = 'Game Over';
         gameOverMessage.style.color = 'red';
-        if (win === true) {gameOverMessage.innerText = 'You Won!';win = false}
+        if (win === true) {gameOverMessage.innerText = 'You Won!';win = false};
         startScreenOverlay.style.display = "flex";
     }
 };
