@@ -1,5 +1,4 @@
 //Treehouse FSJS Techdegree - Project 4 - OOP Game App - Game.js
-
 const startScreenOverlay = document.getElementById("overlay");
 
 class Game {
@@ -42,11 +41,21 @@ class Game {
 
     checkForWin(){
         let win = false;
-        let correctLetters = [];
-        if (correctLetters in phraseLetters){win = true} else win = false;
+        const phraseLetters = document.querySelector('ul').children;
+        const revealLetters = [];
+        for (let i=0;i<phraseLetters.length;i+=1){
+            if (phraseLetters[i].innerText != ' '){
+                revealLetters.push(phraseLetters[i])
+            }
+        };
+        for (let i=0;i<revealLetters.length;i+=1){
+            if (revealLetters[i].className != 'show') {win = false}
+            else win = true
+        };
+        if (win === true){this.gameOver()}
     }
 
-    gameOver(){  
+    gameOver(){
         const letters = document.querySelectorAll('li');
         const keys = document.querySelectorAll('button');
         for(let i=0;i<letters.length;i+=1){
@@ -62,6 +71,7 @@ class Game {
         startGameButton.innerText = 'Start Game';
         gameOverMessage.innerText = 'Game Over';
         gameOverMessage.style.color = 'red';
+        if (win === true) {gameOverMessage.innerText = 'You Won!';win = false}
         startScreenOverlay.style.display = "flex";
     }
 };

@@ -22,8 +22,6 @@ class Phrase {
     }
 
     checkLetter(chosen){
-        console.log(chosen);
-        console.log(this.phrase.indexOf(chosen.innerText));
         if (this.phrase.indexOf(chosen.innerText) < 0) {
             chosen.setAttribute('class','wrong');
             game.removeLife()
@@ -38,7 +36,6 @@ class Phrase {
             chosenLetters.push(chosen[i].innerText)
         };       
         const revealLetters = document.querySelector('ul').children;            
-        console.log(revealLetters);
         for (let i=0;i<revealLetters.length;i+=1) {
             if (chosenLetters.indexOf(revealLetters[i].innerText) > -1) {
                 revealLetters[i].setAttribute('class','show')
