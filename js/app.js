@@ -9,8 +9,8 @@ let game;
 function reset(){
     game = new Game(); 
     game.startGame();
-    for(i=0;i<keyboardLetters.length;i+=1){keyboardLetters[i].disabled = false}
     for(i=0;i<keyboardLetters.length;i+=1){
+        keyboardLetters[i].disabled = false;
         let chosen = keyboardLetters[i];
         chosen.addEventListener('click', event => {
             chosen.disabled = true;

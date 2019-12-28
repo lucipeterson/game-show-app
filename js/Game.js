@@ -33,7 +33,7 @@ class Game {
 
     removeLife(){
         let lives = document.querySelectorAll('.tries');
-        for (i=0;i<lives.length;i+=1) {
+        for (i=0;i<lives.length;i++) {
             lives[this.missed].innerHTML = '<img src="images/lostHeart.png" alt="Heart Icon" height="35" width="30">'
         }
         this.missed += 1;
@@ -60,16 +60,16 @@ class Game {
         this.missed = 0;
         const letters = document.querySelectorAll('li');
         const keys = document.querySelectorAll('button');
+        const scoreboard = document.querySelector('ol');
+        const gameOverMessage = document.querySelector('#game-over-message');
+        const startGameButton = document.querySelector('#btn__reset');
         for(let i=0;i<letters.length;i+=1){
             letters[i].remove();
             };
         for(let i=0;i<keys.length;i+=1){
             keys[i].removeAttribute('class')
             };
-        const scoreboard = document.querySelector('ol');
         scoreboard.innerHTML = '<li class="tries"><img src="images/liveHeart.png" alt="Heart Icon" height="35" width="30"></li> <li class="tries"><img src="images/liveHeart.png" alt="Heart Icon" height="35" width="30"></li> <li class="tries"><img src="images/liveHeart.png" alt="Heart Icon" height="35" width="30"></li> <li class="tries"><img src="images/liveHeart.png" alt="Heart Icon" height="35" width="30"></li> <li class="tries"><img src="images/liveHeart.png" alt="Heart Icon" height="35" width="30"></li>';
-        const gameOverMessage = document.querySelector('#game-over-message');
-        const startGameButton = document.querySelector('#btn__reset');
         startGameButton.innerText = 'Start Game';
         gameOverMessage.innerText = 'Game Over';
         gameOverMessage.style.color = 'red';
