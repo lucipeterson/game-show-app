@@ -28,6 +28,8 @@ class Game {
     handleInteraction(chosen){
         console.log(this.activePhrase.phrase);
         console.log(chosen.innerText);
+        for(i=0;i<keyboardLetters.length;i+=1){
+            keyboardLetters[i].disabled = false;}
         this.activePhrase.checkLetter(chosen);
     }
 
