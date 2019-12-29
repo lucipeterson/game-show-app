@@ -67,10 +67,19 @@ class Game {
             keys[i].removeAttribute('class')
             };
         scoreboard.innerHTML = '<li class="tries"><img src="images/liveHeart.png" alt="Heart Icon" height="35" width="30"></li> <li class="tries"><img src="images/liveHeart.png" alt="Heart Icon" height="35" width="30"></li> <li class="tries"><img src="images/liveHeart.png" alt="Heart Icon" height="35" width="30"></li> <li class="tries"><img src="images/liveHeart.png" alt="Heart Icon" height="35" width="30"></li> <li class="tries"><img src="images/liveHeart.png" alt="Heart Icon" height="35" width="30"></li>';
-        startGameButton.innerText = 'Start Game';
-        gameOverMessage.innerText = 'Game Over';
-        gameOverMessage.style.color = 'red';
-        if (win === true) {gameOverMessage.innerText = 'You Won!';win = false};
+        if (win === true) {
+            gameOverMessage.innerText = 'You Won!';
+            startScreenOverlay.setAttribute('class','win');
+            gameOverMessage.setAttribute('class','win a');
+            win = false
+        }
+        else {
+            startScreenOverlay.setAttribute('class','lose');
+            startGameButton.innerText = 'Start Game';
+            gameOverMessage.innerText = 'Game Over';
+            gameOverMessage.setAttribute('class','lose a');
+            win = false
+        }
         startScreenOverlay.style.display = "flex";
         for(i=0;i<keyboardLetters.length;i+=1){keyboardLetters[i].disabled = false};
     }
