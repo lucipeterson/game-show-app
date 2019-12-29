@@ -28,10 +28,9 @@ class Game {
     handleInteraction(chosen){
         console.log(this.activePhrase.phrase);
         console.log(chosen.innerText);
-        for(i=0;i<keyboardLetters.length;i+=1){
-            keyboardLetters[i].disabled = false;}
+        chosen.disabled = true;
         this.activePhrase.checkLetter(chosen);
-    }
+        }
 
     removeLife(){
         let lives = document.querySelectorAll('.tries');
@@ -77,5 +76,6 @@ class Game {
         gameOverMessage.style.color = 'red';
         if (win === true) {gameOverMessage.innerText = 'You Won!';win = false};
         startScreenOverlay.style.display = "flex";
+        for(i=0;i<keyboardLetters.length;i+=1){keyboardLetters[i].disabled = false};
     }
 };
