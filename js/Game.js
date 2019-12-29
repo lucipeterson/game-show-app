@@ -43,18 +43,14 @@ class Game {
 
     checkForWin(){
         win = false;
-        const phraseLetters = document.querySelector('ul').children;
-        const revealLetters = [];
-        for (let i=0;i<phraseLetters.length;i+=1){
-            if (phraseLetters[i].innerText != ' '){
-                revealLetters.push(phraseLetters[i])
-            }
+        const phraseStr = this.activePhrase.phrase
+        const revealLetters = document.querySelectorAll('.show');
+        const hiddenSpaces = document.getElementsByClassName('hide space');
+        let winCondition = phraseStr.length - hiddenSpaces.length;
+        if (revealLetters.length === winCondition) {
+            win = true;
+            this.gameOver();
         };
-        for (let i=0;i<revealLetters.length;i+=1){
-            if (revealLetters[i].className != 'show') {win = false}
-            else win = true
-        };
-        if (win === true){this.gameOver()}
     }
 
     gameOver(){
