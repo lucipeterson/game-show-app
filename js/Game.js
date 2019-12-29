@@ -42,7 +42,6 @@ class Game {
     }
 
     checkForWin(){
-        win = false;
         const phraseStr = this.activePhrase.phrase
         const revealLetters = document.querySelectorAll('.show');
         const hiddenSpaces = document.getElementsByClassName('hide space');
@@ -53,6 +52,7 @@ class Game {
         };
     }
 
+    //Resets all of the game settings and sends you back to the start screen.
     gameOver(){
         this.missed = 0;
         const letters = document.querySelectorAll('li');

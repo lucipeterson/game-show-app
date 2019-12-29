@@ -4,6 +4,8 @@ const startGameButton = document.getElementById('btn__reset');
 const keyboardLetters = document.querySelectorAll('.key');
 let game;
 
+//Adds an event listener to each keyboard button that calls the 
+//game.handleInteraction() method.
 for(i=0;i<keyboardLetters.length;i+=1){
     let chosen = keyboardLetters[i];
     chosen.addEventListener('click', event => {
