@@ -70,16 +70,12 @@ class Game {
         if (win === true) {
             gameOverMessage.innerText = 'You Won!';
             startScreenOverlay.setAttribute('class','win');
-            gameOverMessage.setAttribute('class','win a');
             win = false
-        }
-        else {
+        } else {
             startScreenOverlay.setAttribute('class','lose');
-            startGameButton.innerText = 'Start Game';
             gameOverMessage.innerText = 'Game Over';
-            gameOverMessage.setAttribute('class','lose a');
             win = false
-        }
+            }
         startScreenOverlay.style.display = "flex";
         for(i=0;i<keyboardLetters.length;i+=1){keyboardLetters[i].disabled = false};
     }
