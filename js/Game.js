@@ -26,11 +26,16 @@ class Game {
     }
 
     handleInteraction(chosen){
-        console.log(this.activePhrase.phrase);
-        console.log(chosen.innerText);
         chosen.disabled = true;
-        this.activePhrase.checkLetter(chosen);
+        if (this.activePhrase.checkLetter(chosen) === false){
+            chosen.setAttribute('class','wrong');this.removeLife()
+        } else {
+            chosen.setAttribute('class','chosen');
+            this.activePhrase.showMatchedLetter()
         }
+        this.checkForWin();
+        if (win === true){this.gameOver()}
+    }
 
     removeLife(){
         let lives = document.querySelectorAll('.tries');
@@ -42,34 +47,29 @@ class Game {
     }
 
     checkForWin(){
-        const phraseStr = this.activePhrase.phrase
+        const phraseStr = this.activePhrase.phrase;
         const revealLetters = document.querySelectorAll('.show');
         const hiddenSpaces = document.getElementsByClassName('hide space');
         let winCondition = phraseStr.length - hiddenSpaces.length;
-        if (revealLetters.length === winCondition) {
-            win = true;
-            this.gameOver();
-        };
+        if (revealLetters.length === winCondition) {win = true}
     }
 
     //Resets all of the game settings and sends you back to the start screen.
     gameOver(){
         this.missed = 0;
         const letters = document.querySelectorAll('li');
-        const keys = document.querySelectorAll('button');
         const scoreboard = document.querySelector('ol');
         const gameOverMessage = document.querySelector('#game-over-message');
-        const startGameButton = document.querySelector('#btn__reset');
         for(let i=0;i<letters.length;i+=1){
             letters[i].remove();
             };
-        for(let i=0;i<keys.length;i+=1){
-            keys[i].removeAttribute('class')
+        for(let i=0;i<keyboardLetters.length;i+=1){
+            keyboardLetters[i].removeAttribute('class')
             };
         scoreboard.innerHTML = '<li class="tries"><img src="images/liveHeart.png" alt="Heart Icon" height="35" width="30"></li> <li class="tries"><img src="images/liveHeart.png" alt="Heart Icon" height="35" width="30"></li> <li class="tries"><img src="images/liveHeart.png" alt="Heart Icon" height="35" width="30"></li> <li class="tries"><img src="images/liveHeart.png" alt="Heart Icon" height="35" width="30"></li> <li class="tries"><img src="images/liveHeart.png" alt="Heart Icon" height="35" width="30"></li>';
         if (win === true) {
-            gameOverMessage.innerText = 'You Won!';
             startScreenOverlay.setAttribute('class','win');
+            gameOverMessage.innerText = 'You Won!';
             win = false
         } else {
             startScreenOverlay.setAttribute('class','lose');
@@ -77,6 +77,8 @@ class Game {
             win = false
             }
         startScreenOverlay.style.display = "flex";
-        for(i=0;i<keyboardLetters.length;i+=1){keyboardLetters[i].disabled = false};
+        for(i=0;i<keyboardLetters.length;i+=1){
+            keyboardLetters[i].disabled = false
+        };
     }
 };

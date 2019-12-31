@@ -22,11 +22,8 @@ class Phrase {
     }
 
     checkLetter(chosen){
-        if (this.phrase.indexOf(chosen.innerText) < 0) {
-            chosen.setAttribute('class','wrong');
-            game.removeLife()
-        }
-        else {chosen.setAttribute('class','chosen');this.showMatchedLetter()};
+        if (this.phrase.indexOf(chosen.innerText) < 0) {return false} 
+        else return true
     }
 
     showMatchedLetter(){
@@ -41,6 +38,5 @@ class Phrase {
                 revealLetters[i].setAttribute('class','show')
                 }
             }
-        game.checkForWin();
     }
 };
